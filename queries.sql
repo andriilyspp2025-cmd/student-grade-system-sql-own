@@ -1,1 +1,1 @@
-SELECT * FROM fake_users.db WHERE age > 30;
+SELECT * FROM students WHERE age > 30 order by age;

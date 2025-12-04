@@ -9,13 +9,15 @@ surnames = ["Коваленко", "Шевченко", "Мельник",
              "Олійник", "Савченко", "Гончаренко",
              "Лисенко", "Козак", "Романенко"]
 with open("seeds.sql", 'w',encoding='utf-8') as f:
-    f.write("INSERT INTO students (name, surname,age)VALUES\n")
+    f.write("TRUNCATE TABLE students RESTART IDENTITY CASCADE;\n\n")
+    f.write("INSERT INTO students (id,name,surname,age)VALUES\n")
     generatornamber = 1000
     for i in range(generatornamber):
         name = random.choice(names)
         surname = random.choice(surnames)
         age = random.randint(18, 60)
-        f.write(f"('{name}', '{surname}', {age})")
+        id = i + 1
+        f.write(f"({id},'{name}', '{surname}', {age})")
         if i < generatornamber - 1:
             f.write(",\n")
         else:
